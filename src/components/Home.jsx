@@ -1,21 +1,25 @@
 import React, { useState } from 'react'
 import Header from './Header'
 import Footer from './Footer'
+import Button from './Button'
+import '../index.css'
 
 export default function Home() {
     const sem_subs = [["phys","calc","chem","python"],["beee","diff","oops","eng"],["dsa","dsd","discrete","java"],["cao","toc","daa","mpmc"]]
     const [subjects, setSubjects] = useState([])
-    const handleClick = (e)=>{
-        setSubjects(sem_subs[e])
+    function updateSubjects(e){
+      setSubjects(sem_subs[e])
     }
   return (
     <div>
       <Header />
       <div className='sems'>
-        <button onClick={()=>handleClick(0)} className='sem-title'>Sem 1</button>
-        <button onClick={()=>handleClick(1)} className='sem-title'>Sem 2</button>
-        <button onClick={()=>handleClick(2)} className='sem-title'>Sem 3</button>
-        <button onClick={()=>handleClick(3)} className='sem-title'>Sem 4</button>
+        <div className='flex justify-center'>
+            <Button func={()=>updateSubjects(0)} text={"Sem 1"}></Button>
+            <Button func={()=>updateSubjects(1)} text={"Sem 2"}></Button>
+            <Button func={()=>updateSubjects(2)} text={"Sem 3"}></Button>
+            <Button func={()=>updateSubjects(3)} text={"Sem 4"}></Button>
+        </div>
       </div>
       <div className='subject-container'>
         {subjects.length>0 ? subjects.map((subject, index)=>{
